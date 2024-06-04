@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Количество товаров с ценой, больше введенной</title>
+</head>
+<body>
+<div style="display: flex">
+    <div>
+        <p>Количество товаров с ценой, больше (</p>
+    </div>
+    <div>
+        <p th:text="${price}"></p>
+    </div>
+    <div>
+        <p>):</p>
+    </div>
+</div>
+<p th:text="${countProducts}"></p>
+<a th:href="@{/products}">Назад</a>
+</body>
+</html>

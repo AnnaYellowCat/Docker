@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: User
+Build-Jdk: 21.0.2
+Implementation-Title: MongoProject
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: ru.gudkova
+Main-Class: ${start-class}
+

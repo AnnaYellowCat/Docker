@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать клиента</title>
+</head>
+<body>
+<h2>Создание нового клиента</h2>
+<form th:action="@{/clients}" method="post" th:object="${client}">
+    Введите логин: <input type="text" field="*{username}" name="username" required>
+    <br>
+    <br>
+    Введите пароль: <input type="text" name="password" required>
+    <br>
+    <br>
+    Введите телефон: <input type="text" name="phone" required>
+    <br>
+    <br>
+    <label for="role">Выберите роль:</label>
+    <select id="role" name="role">
+        <option value="USER">Пользователь</option>
+        <option value="MANAGER">Менеджер</option>
+        <option value="DIRECTOR">Директор</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Создать">
+</form>
+<br>
+<br>
+<a th:href="@{/clients}">Назад</a>
+</body>
+</html>

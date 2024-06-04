@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты по ролям</title>
+</head>
+<body>
+<div style="display: flex">
+    <div>
+        <table border="1">
+            <tr>
+                <td>Роль</td>
+            </tr>
+            <tr th:each="role: ${clientRoles}">
+                <td th:text="${role}"></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td>Кол-во клиентов</td>
+            </tr>
+            <tr th:each="number: ${numberRoles}">
+                <td th:text="${number}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<a th:href="@{/clients}">Назад</a>
+</body>
+</html>

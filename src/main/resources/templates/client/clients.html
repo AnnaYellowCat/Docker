@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты</title>
+</head>
+<body>
+<h2>Клиенты</h2>
+<table border="3">
+    <tr>
+        <td>Логин</td>
+        <td>Телефон</td>
+        <td>Роль</td>
+    </tr>
+    <tr th:each="client: ${clients}">
+        <td th:text="${client.getUsername()}"></td>
+        <td th:text="${client.getPhone()}"></td>
+        <td th:text="${client.getRole()}"></td>
+        <td>
+            <form th:action="@{/clients/{id}/update(id=${client.getId()})}" method="get">
+                <input type="submit" value="Обновить">
+            </form>
+            <form th:action="@{/clients/{id}(id=${client.getId()})}" th:method="delete">
+                <input type="submit" value="Удалить">
+            </form>
+        </td>
+    </tr>
+</table>
+<form th:action="@{/clients/create}" method="get">
+    <br>
+    <input type="submit" value="Создать">
+</form>
+<br>
+<form th:action="@{/clients/like}" method="post">
+    <br>
+    Введите имя для поиска: <input type="text" name="username" required>
+    <input type="submit" value="Найти клиентов по имени">
+</form>
+<br>
+<form th:action="@{/clients/groupByRole}" method="get">
+    <br>
+    <input type="submit" value="Сгруппировать клиентов по ролям">
+</form>
+<br>
+<form th:action="@{/clients/sort}" method="get">
+    <br>
+    <input type="submit" value="Отсортировать клиентов по именам">
+</form>
+<br>
+<a th:href="@{/home}">На главную</a>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Общее количество товаров на складе</title>
+</head>
+<body>
+<p>Общее количесто товаров на складе:</p>
+<p th:text="${productsSum}"></p>
+<a th:href="@{/products}">Назад</a>
+</body>
+</html>

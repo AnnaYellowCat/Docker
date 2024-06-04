@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Продажа с минимальной датой</title>
+</head>
+<body>
+<p>Продажа с минимальной датой:</p>
+<table border="3">
+    <tr>
+        <td>Клиент</td>
+        <td>Дата</td>
+        <td>Название и количество продукта</td>
+    </tr>
+    <tr>
+        <td th:text="${minDateSale.getClientName()}"></td>
+        <td th:text="${minDateSale.getDate()}"></td>
+        <td>
+            <div style="display: flex">
+                <div>
+                    <table border="1" th:width="300px">
+                        <tr th:each="key: ${minDateSale.getProductTitlesByQuantity().keySet()}">
+                            <td th:text="${key}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table border="1" th:width="25">
+                        <tr th:each="value: ${minDateSale.getProductTitlesByQuantity().values()}">
+                            <td th:text="${value}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/sales}">Назад</a>
+</body>
+</html>

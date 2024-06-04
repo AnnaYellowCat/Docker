@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить клиента</title>
+</head>
+<body>
+<h2>Обновление клиента</h2>
+<form th:action="@{/clients/{id}(id=${client.getId()})}" th:method="patch">
+    Введите логин: <input type="text" name="username" th:value="${client.getUsername()}" required>
+    <br>
+    <br>
+    Введите пароль: <input type="text" name="password" value="********" required>
+    <br>
+    <br>
+    Введите телефон: <input type="text" name="phone" th:value="${client.getPhone}" required>
+    <br>
+    <br>
+    <label for="role">Выберите роль:</label>
+    <select id="role" name="role">
+        <option value="USER">Пользователь</option>
+        <option value="MANAGER">Менеджер</option>
+        <option value="DIRECTOR">Директор</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Обновить">
+</form>
+<br>
+<br>
+<a th:href="@{/clients}">Назад</a>
+</body>
+</html>

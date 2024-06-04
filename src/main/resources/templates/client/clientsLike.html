@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты по введенному имени</title>
+</head>
+<body>
+<div style="display: flex">
+    <div>
+        <p>Клиенты с именем (</p>
+    </div>
+    <div>
+        <p th:text="${username}"></p>
+    </div>
+    <div>
+        <p>):</p>
+    </div>
+</div>
+<p></p>
+<table border="3">
+    <tr>
+        <td>Имя клиента</td>
+        <td>Телефон</td>
+        <td>Роль</td>
+    </tr>
+    <tr th:each="client: ${clientsLike}">
+        <td th:text="${client.getUsername()}"></td>
+        <td th:text="${client.getPhone()}"></td>
+        <td th:text="${client.getRole()}"></td>
+</table>
+<br>
+<a th:href="@{/clients}">Назад</a>
+</body>
+</html>

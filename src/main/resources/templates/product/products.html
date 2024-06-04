@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+</head>
+<body>
+<h2>Товары</h2>
+<table border="3">
+    <tr>
+        <td>Название</td>
+        <td>Описание</td>
+        <td>Цена</td>
+        <td>Кол-во на складе</td>
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.getTitle()}"></td>
+        <td th:text="${product.getDescription()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+        <td th:text="${product.getQuantity()}"></td>
+        <td>
+            <form th:action="@{/products/{id}/update(id=${product.getId()})}" method="get">
+                <input type="submit" value="Обновить">
+            </form>
+            <form th:action="@{/products/{id}(id=${product.getId()})}" th:method="delete">
+                <input type="submit" value="Удалить">
+            </form>
+        </td>
+    </tr>
+</table>
+<form th:action="@{/products/create}" method="get">
+    <br>
+    <input type="submit" value="Создать">
+</form>
+<br>
+<form th:action="@{/products/sum}" method="get">
+    <br>
+    <input type="submit" value="Посчитать общее количество товаров">
+</form>
+<br>
+<form th:action="@{/products/count}" method="post">
+    <br>
+    Введите цену: <input type="number" min="0" name="price" required>
+    <input type="submit" value="Посчитать кол-во видов товаров с ценой, больше введенной">
+</form>
+<br>
+<a th:href="@{/home}">На главную</a>
+</body>
+</html>

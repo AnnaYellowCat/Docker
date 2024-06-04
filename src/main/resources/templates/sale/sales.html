@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Продажи</title>
+</head>
+<body>
+<h2>Продажи</h2>
+<table border="3">
+    <tr>
+        <td>Клиент</td>
+        <td>Дата</td>
+        <td>Название и количество продукта</td>
+    </tr>
+    <tr th:each="sale: ${sales}">
+        <td th:text="${sale.getClientName()}"></td>
+        <td th:text="${sale.getDate()}"></td>
+        <td>
+            <div style="display: flex">
+                <div>
+                    <table border="1" th:width="300px">
+                        <tr th:each="key: ${sale.getProductTitlesByQuantity().keySet()}">
+                            <td th:text="${key}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table border="1" th:width="25px">
+                        <tr th:each="value: ${sale.getProductTitlesByQuantity().values()}">
+                            <td th:text="${value}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+        <td>
+            <form th:action="@{/sales/{id}(id=${sale.getId()})}" th:method="delete">
+                <input type="submit" value="Удалить">
+            </form>
+        </td>
+    </tr>
+</table>
+<form th:action="@{/sales/min}" method="get">
+    <br>
+    <input type="submit" value="Найти продажу с минимальной датой">
+</form>
+<br>
+<a th:href="@{/home}">На главную</a>
+</body>
+</html>
