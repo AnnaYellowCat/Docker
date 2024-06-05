@@ -10,7 +10,7 @@
     Введите логин: <input type="text" name="username" th:value="${client.getUsername()}" required>
     <br>
     <br>
-    Введите пароль: <input type="text" name="password" value="********" required>
+    Введите пароль: <input type="password" name="password" value="${client.getPassword}" required>
     <br>
     <br>
     Введите телефон: <input type="text" name="phone" th:value="${client.getPhone}" required>
